@@ -13,8 +13,6 @@ module.exports = (toolbox) => {
       return
     }
 
-    name = name.charAt(0).toUpperCase() + name.slice(1);
-
     await template.generate({
       template: 'component.js.ejs',
       target: `${folder}/${name}/index.js`,
@@ -30,7 +28,7 @@ module.exports = (toolbox) => {
       target: `${folder}/${name}/styles.js`,
     })
 
-    success(`Generated ${folder}/${name}.`)
+    success(`Generated ${folder}${name}.`)
   }
 
   toolbox.createComponent = createComponent

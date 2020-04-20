@@ -16,8 +16,8 @@ module.exports = {
     }
 
     for (var i = 0; i < parameters.array.length; i++) {
-      const name = parameters.array[i]
-
+      const name = parameters.array[i].charAt(0).toUpperCase() + parameters.array[i].slice(1);
+      
       await createComponent('src/components', name)
     }
   },

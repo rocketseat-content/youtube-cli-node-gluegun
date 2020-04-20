@@ -17,9 +17,18 @@ module.exports = {
     }
     
     for (var i = 0; i < parameters.array.length; i++) {
-      const name = parameters.array[i]
 
-      await createComponent('src/pages', name)
+      let path = parameters.array[i].split(toolbox.filesystem.separator);
+      path = path.map(p=> p.charAt(0).toUpperCase() + p.slice(1))
+      const name = path[path.length -1];
+      path.pop();
+      path = path.join(`${toolbox.filesystem.separator}`);
+      
+      await createComponent(`src/pages/${path && path+toolbox.filesystem.separator}`, name)
+
+      if(parameters.options.routes){
+        toolbox.filesystem.append('src/routes.js', `import ${name} from './pages/${path && path+toolbox.filesystem.separator}${name}';\n`)
+      }
     }
     
   },
