@@ -28,7 +28,7 @@ module.exports = (toolbox) => {
       target: `${folder}/${name}/styles.js`,
     })
 
-    success(`Generated ${folder}/${name}.`)
+    success(`Generated ${folder}${name}.`)
   }
 
   toolbox.createComponent = createComponent
